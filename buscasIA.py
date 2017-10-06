@@ -1,4 +1,5 @@
 import collections
+import sys
 
 class Grafo:
     def __init__(self):
@@ -58,20 +59,33 @@ class Queue:
         return self.elements.popleft()
 
 def busca_largura(grafo, inicio):
-	buffer = Queue()
-	buffer.put(inicio)
-	visitados = {}
-	visitados[inicio] = True
+    buffer = Queue()
+    buffer.put(inicio)
+    visitados = {}
+    visitados[inicio] = True
 
-	while not buffer.empty():
-		visitando = buffer.get()
-		print("Visitando: " + visitando)
-		for prox in grafo.arestas_do_vertice(visitando):
-			if prox not in visitados:
-				buffer.put(prox)
-				visitados[prox] = True
+    while not buffer.empty():
+        visitando = buffer.get()
+        print("Visitando: " + visitando)
+        for prox in grafo.arestas_do_vertice(visitando):
+            if prox not in visitados:
+                buffer.put(prox)
+                visitados[prox] = True
 
 
 
+def busca_largura_IA(grafo, inicio, final):
+    buffer = Queue()
+    buffer.put(inicio)
+    visitados = {}
+    visitados[inicio] = True
+
+    while not buffer.empty():
+        visitando = buffer.get()
+        print("Visitando: " + visitando)
+        if visitando == 'S7': 
+            sys.exit(1)
+        for prox in grafo.arestas_do_vertice(visitando):   
+            buffer.put(prox)
 
 
