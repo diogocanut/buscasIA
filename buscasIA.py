@@ -83,7 +83,7 @@ def busca_largura_IA(grafo, inicio, final):
     while not buffer.empty():
         visitando = buffer.get()
         print("Visitando: " + visitando)
-        if visitando == 'S7': 
+        if visitando == 'S7' or visitando == 'S6': 
             sys.exit(1)
         for prox in grafo.arestas_do_vertice(visitando):   
             buffer.put(prox)
