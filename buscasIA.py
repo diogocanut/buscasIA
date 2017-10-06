@@ -90,3 +90,34 @@ def busca_largura_IA(grafo, inicio):
                 buffer.put(prox)
                 visitados[prox] = True
 
+
+def busca_largura_com_custo(grafo, inicio):
+    buffer = Queue()
+    buffer.put(inicio)
+    visitados = {}
+    visitados[inicio] = True
+    custo = 0
+
+    while not buffer.empty():
+        visitando = buffer.get()
+        custo = custo + 1
+        print("Visitando: " + visitando)
+        if visitando == 'S7' or visitando == 'S6': 
+            return custo
+        for prox in grafo.arestas_do_vertice(visitando):   
+            if prox not in visitados:
+                buffer.put(prox)
+                visitados[prox] = True
+
+
+def busca_A_estrela(grafo, inicio):
+	buffer = Queue()
+	for x in grafo.arestas_do_vertice(inicio):
+		buffer.put(x)
+	custos = {}
+
+	while not buffer.empty():
+		visitando = buffer.get()
+		custos[visitando] = str(busca_largura_com_custo(grafo,visitando))
+
+	print(custos)
