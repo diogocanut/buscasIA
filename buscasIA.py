@@ -9,16 +9,39 @@ class Grafo:
 
 grafo = Grafo()
 grafo.arestas = {
-    'A': ['B', 'C', 'D'],
-    'B': ['E', 'F'],
-    'C': ['G', 'H'],
-    'D': ['I', 'J'],
-    'E': [],
-    'F': [],
-    'G': [],
-    'H': [],
-    'I': [],
-    'J': [],
+    'S0': ['S1', 'S0', 'S2'],
+    # estado inicial, aspirador de pó no piso direito com os 2 pisos sujos
+    #S1 caso o aspirador se mova para a esquerda a partir de S0
+    #S2 caso o aspirador aspire a sujeira do comodo atual
+    #S0 caso mova-se para a direita
+    'S1': ['S1', 'S0','S5'],
+    #S1 caso o aspirador se mova para o comodo da esquerda
+    #S0 caso mova-se para o comodo da direita
+    #S5 caso aspire o comodo atual
+    'S2': ['S3', 'S2', 'S2'],
+    #mover esquerda: S3
+    #mover direita: S2
+    #aspirar: S2
+    'S3': ['S3', 'S2', 'S7'],
+    #mover esquerda: S3
+    #mover direita: S2
+    #aspirar: S7
+    'S4': ['S5', 'S4', 'S6'],
+    #mover esquerda: S5
+    #mover direita: S4
+    #aspirar: S6
+    'S5': ['S5', 'S4', 'S5'],
+    #mover esquerda: S5
+    #mover direita: S4
+    #aspirar: S5
+    'S6': ['S7', 'S6', 'S6'],
+    #mover esquerda: S7
+    #mover direita: S6
+    #aspirar: S6    
+    'S7': ['S7', 'S6', 'S7'],
+    #mover esquerda: S7
+    #mover direita: S6
+    #aspirar: S7
 }
 
 class Queue:
