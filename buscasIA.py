@@ -74,7 +74,7 @@ def busca_largura(grafo, inicio):
 
 
 
-def busca_largura_IA(grafo, inicio, final):
+def busca_largura_IA(grafo, inicio):
     buffer = Queue()
     buffer.put(inicio)
     visitados = {}
@@ -86,6 +86,7 @@ def busca_largura_IA(grafo, inicio, final):
         if visitando == 'S7' or visitando == 'S6': 
             sys.exit(1)
         for prox in grafo.arestas_do_vertice(visitando):   
-            buffer.put(prox)
-
+            if prox not in visitados:
+                buffer.put(prox)
+                visitados[prox] = True
 
